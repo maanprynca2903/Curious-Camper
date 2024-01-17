@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Campsite Availability</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4; /* Light gray background color */
+            color: #333; /* Dark text color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333; /* Dark text color */
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #333; /* Dark text color */
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #3498db; /* Blue button color */
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #2980b9; /* Darker blue on hover */
+        }
+
+        a {
+            color: #e74c3c; /* Red link color */
+            text-decoration: none;
+            margin-top: 10px;
+            display: block;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+        /* Add this style in the head section or in a separate CSS file */
+#availability-box {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+    </style>
+</head>
+<body>
+    <form action="{{ url_for('check_campsite_availability') }}" method="post">
+        <h2>Check Campsite Availability</h2>
+
+        <label for="inputState">State:</label>
+        <input type="text" name="inputState" required>
+
+        <label for="inputGuests">Number of Guests:</label>
+        <input type="number" name="inputGuests" required>
+
+        <button type="submit">Check Availability</button>
+
+        <a href="{{ url_for('logout') }}">Logout</a>
+        <a href="{{ url_for('user_dashboard') }}">Back to Main Menu</a>
+    </form>
+    <div id="availability-box">
+    {% if show_message %}
+    {% if data %}
+    {% if data|length > 0 %}
+    <h3>Campsite Availability:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Campsite ID</th>
+                <th>Campsite Name</th>
+                <th>City</th>
+                <!-- Add other header fields as needed -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for campsite in data %}
+            <tr>
+                <td>{{ campsite.campsiteId }}</td>
+                <td>{{ campsite.campsite_name }}</td>
+                <td>{{ campsite.city }}</td>
+                <!-- Add other fields as needed -->
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No campsites available.</p>
+{% endif %}
+{% else %}
+<p>No campsites available </p>
+{% endif %}
+{% endif %}
+</div>
+</body>
+</html>

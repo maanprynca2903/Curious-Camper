@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+        }
+
+        h2 {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            margin: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            background-color: #333;
+            width: 200px;
+            height: 100%;
+            display: flex;
+            flex-direction: column; /* Make the menu items stack vertically */
+        }
+
+        li {
+            text-align: center;
+        }
+
+        li a {
+            display: block;
+            color: #fff;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        li a:hover {
+            background-color: #555;
+        }
+
+        main {
+            flex: 1; /* Allow the main content to grow and take remaining space */
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>User Dashboard</h2>
+    <ul>
+        <li><a href="{{ url_for('book_campsite') }}">Book Campsite</a></li>
+        <li><a href="{{ url_for('alter_booking') }}">Alter Booking </a></li>
+        <li><a href="{{ url_for('cancel_booking') }}">Cancel Booking</a></li>
+        <li><a href="{{ url_for('add_review') }}">Add Review</a></li>
+        <li><a href="{{ url_for('generate_support_ticket') }}">Generate Support Ticket</a></li>
+        <li><a href="{{ url_for('is_booking_confirmed') }}">Booking Confirmation</a></li>
+        <li><a href="{{ url_for('check_campsite_availability') }}">Campsite Availability</a></li>
+        <li><a href="{{ url_for('get_average_rating') }}">Rating</a></li>
+        <li><a href="{{ url_for('update_user_profile') }}">Update User Profile</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+    </ul>
+    <main>
+        <!-- Your main content goes here -->
+    </main>
+</body>
+</html>

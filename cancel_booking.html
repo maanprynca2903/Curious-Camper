@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancel Booking</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4; /* Light gray background color */
+            color: #333; /* Dark text color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333; /* Dark text color */
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #333; /* Dark text color */
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #e74c3c; /* Red button color */
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #c0392b; /* Darker red on hover */
+        }
+
+        a {
+            color: #3498db; /* Blue link color */
+            text-decoration: none;
+            margin-top: 10px;
+            display: block;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <form action="{{ url_for('cancel_booking') }}" method="post">
+        <h2>Cancel Booking</h2>
+
+        <label for="userName">User Name:</label>
+        <input type="text" name="userName" required>
+
+        <label for="bookingId">Booking ID:</label>
+        <input type="number" name="bookingId" required>
+
+        <button type="submit">Cancel Booking</button>
+
+        <a href="{{ url_for('logout') }}">Logout</a>
+        <a href="{{ url_for('user_dashboard') }}">Main Menu</a>
+    </form>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Amenity</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 350px; /* Adjusted width */
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 8px; /* Adjusted margin */
+        }
+
+        label {
+            display: block;
+            margin: 6px 0 4px; /* Adjusted margin */
+            font-weight: bold;
+            color: #333;
+        }
+
+        input {
+            width: calc(100% - 22px);
+            padding: 7px;
+            margin-bottom: 6px; /* Adjusted margin */
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #27ae60;
+            color: #fff;
+            padding: 7px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #219653;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+            margin-top: 6px; /* Adjusted margin */
+            display: block;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        #success-message {
+            margin-top: 8px; /* Adjusted margin */
+            padding: 8px;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 4px;
+            color: #155724;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form action="{{ url_for('add_amenity') }}" method="post">
+        <h2>Add Amenity</h2>
+
+        <label for="adminUsername">Admin:</label>
+        <input type="text" name="adminUsername" required>
+
+        <label for="amenityName">Amenity:</label>
+        <input type="text" name="amenityName" required>
+
+        <label for="streetNumber">Street #:</label>
+        <input type="number" name="streetNumber" required>
+
+        <label for="streetName">Street:</label>
+        <input type="text" name="streetName" required>
+
+        <label for="city">City:</label>
+        <input type="text" name="city" required>
+
+        <label for="state">State:</label>
+        <input type="text" name="state" required>
+
+        <label for="zipcode">Zip:</label>
+        <input type="text" name="zipcode" required>
+
+        <label for="distance">Distance:</label>
+        <input type="number" name="distance" step="0.01" required>
+
+        <label for="typeName">Type:</label>
+        <input type="text" name="typeName" required>
+
+        <label for="campsiteId">Campsite ID:</label>
+        <input type="number" name="campsiteId" required>
+
+        <button type="submit">Add</button>
+
+        <a href="{{ url_for('logout') }}">Logout</a>
+        <a href="{{ url_for('admin_dashboard') }}">Main Menu</a>
+    </form>
+
+    {% if success_message %}
+        <div id="success-message">
+            {{ success_message }}
+        </div>
+    {% endif %}
+    
+
+    
+</body>
+</html>

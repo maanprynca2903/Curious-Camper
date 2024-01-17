@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Campsite</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4; /* Light gray background color */
+            color: #333; /* Dark text color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333; /* Dark text color */
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin: 8px 0 4px;
+            font-weight: bold;
+            color: #333; /* Dark text color */
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #27ae60; /* Green button color */
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #219653; /* Darker green on hover */
+        }
+
+        a {
+            color: #3498db; /* Blue link color */
+            text-decoration: none;
+            margin-top: 8px;
+            display: block;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        #success-message {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 4px;
+            color: #155724;
+        }
+    </style>
+</head>
+<body>
+    <form action="{{ url_for('add_campsite') }}" method="post">
+        <h2>Add Campsite</h2>
+
+        <label for="adminUsername">Admin Username:</label>
+        <input type="text" name="adminUsername" required>
+
+        <label for="campsiteName">Campsite Name:</label>
+        <input type="text" name="campsiteName" required>
+
+        <label for="streetNumber">Street Number:</label>
+        <input type="number" name="streetNumber" required>
+
+        <label for="streetName">Street Name:</label>
+        <input type="text" name="streetName" required>
+
+        <label for="city">City:</label>
+        <input type="text" name="city" required>
+
+        <label for="state">State:</label>
+        <input type="text" name="state" required>
+
+        <label for="zipcode">Zipcode:</label>
+        <input type="text" name="zipcode" required>
+
+        <label for="spotsAvailable">Spots Available:</label>
+        <input type="number" name="spotsAvailable" required>
+
+        <label for="pricePerNight">Price Per Night:</label>
+        <input type="number" name="pricePerNight" step="0.01" required>
+
+        <button type="submit">Add Campsite</button>
+
+        <a href="{{ url_for('logout') }}">Logout</a>
+        <a href="{{ url_for('admin_dashboard') }}">Main Menu</a>
+    </form>
+    {% if success_message %}
+        <div id="success-message">
+            {{ success_message }}
+        </div>
+    {% endif %}
+</body>
+</html>
